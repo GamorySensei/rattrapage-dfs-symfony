@@ -24,7 +24,6 @@ class AppFixtures extends Fixture
             $manager->persist($task);
         }
 
-
         // Création des tâches à effectuer
         $tasks = [
             "Ajouter la fonctionnalité permettant de créer une tâche",

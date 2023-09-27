@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
-{% endblock %}
+{% block title %}Mes tâches{% endblock %}
 
 {% block body %}
 	<div class="container py-5">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col">
 				<div class="page-header mb-4">
 					<h1>Ma liste de tâches</h1>
 				</div>
 			</div>
+			<div class="col-auto">
+				<a href="#" class="btn btn-primary"><i class="bi bi-plus"></i> Ajouter</a>
+			</div>
+		</div>
+			
+		<div class="row">
 			<div class="col-md-12">
 				<table class="table table-hover">
 					<tbody>
@@ -18,12 +23,12 @@
 							<tr {% if task.isChecked %} class="table-success" {% endif %}>
 								<td class="text-center">
 									{% if not task.isChecked %}
-										<a href="#" class="btn btn-link btn-sm">
+										<a href="#" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-title="Permettre la modification d'une tâche."> 
 											<i class="bi bi-pencil-square"></i>
 										</a>
 									{% else %}
-                                        <i class="bi bi-check-circle-fill text-success"></i>
-                                    {% endif %}
+										<i class="bi bi-check-circle-fill text-success"></i>
+									{% endif %}
 								</td>
 								<td>{{ task.label }}</td>
 								<td>Créée le
@@ -32,12 +37,19 @@
 									{% if task.isChecked %}
 										<span class="badge bg-success">Validée</span>
 									{% else %}
-										<a href="#" class="btn btn-outline-primary btn-sm">Valider</a>
+										<a href="#" class="btn btn-outline-primary btn-sm" 
+										data-bs-toggle="tooltip" 
+										data-bs-title="Marquer comme terminée">Valider</a>
 									{% endif %}
 								</td>
+								{# <td>
+									<a href="#" class="btn btn-danger btn-sm"><i class="bi bi-archive"></i></a>
+								</td> #}
 							</tr>
 						{% endfor %}
 					</tbody>
-				</table</div>
-			</div</div>
-		{% endblock %}
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}
